@@ -124,3 +124,47 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  background-color: #f9f9f9;
+}
+
+.contact-image img {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+.contact-details {
+  font-size: 1.1rem;
+  line-height: 2;
+  margin-left: 20px;
+}
+
+.contact-details strong {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.contact-details p {
+  color: #555;
+  margin-bottom: 0;
+}
+
+.contact-details a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
