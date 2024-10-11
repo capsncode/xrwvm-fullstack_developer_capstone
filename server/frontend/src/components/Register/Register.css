@@ -1,5 +1,14 @@
 .register_panel {
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin: 0 auto;
+  width: 50%;
+  padding: 20px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
   background: #f1f1f1;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -43,7 +52,7 @@
 .action_button {
   cursor: pointer;
   font-size: large;
-  color: rgb(97, 64, 128);
+  color: black;
   border-radius: 10px;
   height:40px;
   padding-left:.5cm;
@@ -61,8 +70,34 @@
   margin-top: 1rem;
   color: #007BFF;
   text-decoration: none;
+  white-space: nowrap
 }
 
 .loginlink:hover {
   text-decoration: underline;
+  ;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #f5f5f5;
+  padding-top: 100px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
 }

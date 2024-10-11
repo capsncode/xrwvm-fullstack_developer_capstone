@@ -52,9 +52,10 @@ const Register = ({ onClose }) => {
   return (
     <div>
       <Header />
-      <div onClick={onClose}>
-        <div onClick={(e) => e.stopPropagation()} className="modalContainer">
+      <div onClick={onClose} className="register-container">
+        <div onClick={(e) => e.stopPropagation()} className="card">
           <form className="login_panel" onSubmit={register}>
+            <h2 className="card-title">Sign Up</h2>
             <div className="input">
               <FontAwesomeIcon icon={faUser} className="input_icon" />
               <input type="text" name="username" placeholder="Username" className="input_field" onChange={(e) => setUserName(e.target.value)} />
