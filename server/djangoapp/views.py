@@ -42,10 +42,47 @@ def logout(request):
     data = {"userName":""}
     return JsonResponse(data)
 
-# Create a `registration` view to handle sign up request
-# @csrf_exempt
-# def registration(request):
-# ...
+@csrf_exempt
+def registration(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "Only POST requests are allowed"}, status=405)
+    
+    try:
+        data = json.loads(request.body)
+        username = data.get('userName')
+        password = data.get('password')
+        first_name = data.get('firstName')
+        last_name = data.get('lastName')
+        email = data.get('email')
+
+        if not all([username, password, first_name, last_name, email]):
+            return JsonResponse({"error": "All fields are required"}, status=400)
+
+        if User.objects.filter(username=username).exists():
+            return JsonResponse({"error": f"Username '{username}' is already taken"}, status=409)
+
+        if User.objects.filter(email=email).exists():
+            return JsonResponse({"error": f"Email '{email}' is already registered"}, status=409)
+
+        user = User.objects.create_user(
+            username=username,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            email=email
+        )
+
+        login(request, user)
+
+        logger.info(f"New user '{username}' registered and logged in successfully.")
+
+        return JsonResponse({"username": username, "status": "Authenticated"}, status=201)
+
+    except json.JSONDecodeError:
+        return JsonResponse({"error": "Invalid JSON input"}, status=400)
+    except Exception as e:
+        logger.error(f"Error during registration: {str(e)}")
+        return JsonResponse({"error": "An error occurred during registration"}, status=500)
 
 # # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
